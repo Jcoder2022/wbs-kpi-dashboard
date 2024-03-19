@@ -2,6 +2,7 @@ package com.wbs.wbskpidashboard.repository;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.wbs.wbskpidashboard.model.BusinessTeamKPI;
@@ -15,14 +16,13 @@ public interface BusinessTeamKPIRepository extends CrudRepository <BusinessTeamK
     
     List<BusinessTeamKPI> findByTeamName(String teamName);
 
-//     private String kpiBusinessMeasure; 		
-//    private double value;
-//    private String teamName;
    
     List<BusinessTeamKPI> findByKpiBusinessMeasure(String kpiBusinessMeasure);     
 
-    @Query(value = "SELECT team_name,kpi_business_measure , AVG(kpi.value) FROM business_team_kpi kpi" , nativeQuery = true)
-    List<BusinessTeamKPI> findAverageTeamKPIs();
+    @Query(value = "SELECT  AVG(kpi.value) "+
+    "FROM business_team_kpi kpi where kpi.team_name = :teamName and  kpi.kpi_business_measure= :kpiBusinessMeasure" , nativeQuery = true)
+    Double retreiveValue(@Param("teamName") String teamName,@Param("kpiBusinessMeasure") String kpiBusinessMeasure);
+
 
     List<BusinessTeamKPI> findByKpiBusinessMeasureAndDataForDay(String kpiMeasure, LocalDate date);
 }

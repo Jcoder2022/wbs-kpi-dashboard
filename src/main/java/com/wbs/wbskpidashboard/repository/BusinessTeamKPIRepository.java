@@ -5,6 +5,8 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.wbs.wbskpidashboard.model.BusinessTeamKPI;
+
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -21,4 +23,6 @@ public interface BusinessTeamKPIRepository extends CrudRepository <BusinessTeamK
 
     @Query(value = "SELECT team_name,kpi_business_measure , AVG(kpi.value) FROM business_team_kpi kpi" , nativeQuery = true)
     List<BusinessTeamKPI> findAverageTeamKPIs();
+
+    List<BusinessTeamKPI> findByKpiBusinessMeasureAndDataForDay(String kpiMeasure, LocalDate date);
 }

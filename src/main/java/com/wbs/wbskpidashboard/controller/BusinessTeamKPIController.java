@@ -1,5 +1,6 @@
 package com.wbs.wbskpidashboard.controller;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -41,12 +42,11 @@ public class BusinessTeamKPIController {
     }
     
 
-    @GetMapping("wbs-kpi-dashboard/kpi/ranking")
+    @GetMapping("wbs-kpi-dashboard/kpi/{kpiMeasure}/day/{date}")
 
-    public Map<String, > getTeamRanking(){
-
+    public List<BusinessTeamKPI> getKPIMeasure(@PathVariable String kpiMeasure,@PathVariable LocalDate date){
         
-        return null;
+        return businessTeamKPIRepository.findByKpiBusinessMeasureAndDataForDay(kpiMeasure,date);
     }
 
     

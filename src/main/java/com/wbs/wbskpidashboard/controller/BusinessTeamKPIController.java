@@ -105,7 +105,10 @@ public class BusinessTeamKPIController {
 
         summaryMap.put("Overall Average", teamSummary);
         
-        
+        double a = 123.13698;
+    double roundOff = Math.round(a*100)/100.00;
+
+    System.out.println(roundOff);
 
         
         return summaryMap;

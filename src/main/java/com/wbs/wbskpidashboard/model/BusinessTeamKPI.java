@@ -2,7 +2,7 @@ package com.wbs.wbskpidashboard.model;
 
 import java.time.LocalDate;
 
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,8 +16,10 @@ public class BusinessTeamKPI {
    @Id
    @GeneratedValue(strategy = GenerationType.AUTO)
    private Long id;
-   private String kpiBusinessMeasure; 		
-   private double value;
+   private String kpiBusinessMeasure; 	
+   
+   @Column(name="value", columnDefinition="Decimal(10,2) default '100.00'")
+	private double value;
    private String teamName;
    
     private LocalDate dataForDay;	

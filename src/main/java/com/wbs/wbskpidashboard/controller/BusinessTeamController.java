@@ -8,23 +8,19 @@ import com.wbs.wbskpidashboard.repository.BusinessTeamRepository;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 @RestController
 public class BusinessTeamController {
-    
+
     private BusinessTeamRepository businessTeamRepository;
 
-    public BusinessTeamController(BusinessTeamRepository businessTeamRepository){
+    public BusinessTeamController(BusinessTeamRepository businessTeamRepository) {
         this.businessTeamRepository = businessTeamRepository;
     }
 
-
     @GetMapping("wbs-kpi-dashboard/teams")
     public List<BusinessTeam> getAllTeams() {
-       return (List<BusinessTeam>) businessTeamRepository.findAll();
+        return (List<BusinessTeam>) businessTeamRepository.findAll();
     }
-    
-    
+
 }

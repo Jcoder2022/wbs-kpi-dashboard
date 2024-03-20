@@ -7,18 +7,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
-public class BusinessTeamsKPI {
+@Table(name="business_team_kpi")
+public class BusinessTeamKPI {
    
-
-    @Override
-    public String toString() {
-        return "BusinessTeamsKPI [id=" + id + ", kpiBusinessMeasure=" + kpiBusinessMeasure + ", value=" + value
-                + ", teamName=" + teamName + ", dataForDay=" + dataForDay + "]";
-    }
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+   @Id
+   @GeneratedValue(strategy = GenerationType.AUTO)
    private Long id;
    private String kpiBusinessMeasure; 		
    private double value;
@@ -26,10 +22,18 @@ public class BusinessTeamsKPI {
    
     private LocalDate dataForDay;	
 
-   public BusinessTeamsKPI(){
+
+
+    @Override
+    public String toString() {
+        return "BusinessTeamsKPI [id=" + id + ", kpiBusinessMeasure=" + kpiBusinessMeasure + ", value=" + value
+                + ", teamName=" + teamName + ", dataForDay=" + dataForDay + "]";
+    }
+   
+   public BusinessTeamKPI(){
 
    }
-   public BusinessTeamsKPI(String kpiBusinessMeasure, double value, String teamName, LocalDate dataForDay) {
+   public BusinessTeamKPI(String kpiBusinessMeasure, double value, String teamName, LocalDate dataForDay) {
     this.kpiBusinessMeasure = kpiBusinessMeasure;
     this.value = value;
     this.teamName = teamName;

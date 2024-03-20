@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ResourceUtils;
 
-import com.wbs.wbskpidashboard.model.BusinessTeamsKPI;
+import com.wbs.wbskpidashboard.model.BusinessTeamKPI;
 import com.wbs.wbskpidashboard.model.BusinessTeam;
 import com.wbs.wbskpidashboard.repository.BusinessTeamRepository;
-import com.wbs.wbskpidashboard.repository.BusinessTeamsKPIRepository;
+import com.wbs.wbskpidashboard.repository.BusinessTeamKPIRepository;
 
 import java.io.FileReader;
 import java.time.LocalDate;
@@ -26,7 +26,7 @@ public class Loader {
 
     
     private BusinessTeamRepository businessTeamRepository;
-    private BusinessTeamsKPIRepository businessTeamsKPIRepository;
+    private BusinessTeamKPIRepository businessTeamsKPIRepository;
 
       private final static  String fileDay1 =  "2023-06-19";
       private final static  String fileDay2 =  "2023-06-20";
@@ -37,7 +37,7 @@ public class Loader {
 
       private static String currentFile;
        
-     Loader(BusinessTeamRepository businessTeamRepository,BusinessTeamsKPIRepository businessTeamsKPIRepository) {
+     Loader(BusinessTeamRepository businessTeamRepository,BusinessTeamKPIRepository businessTeamsKPIRepository) {
 
         this.businessTeamRepository = businessTeamRepository;
         this.businessTeamsKPIRepository = businessTeamsKPIRepository;
@@ -118,7 +118,7 @@ public class Loader {
 
     private  void processor(JSONArray jsonArray,String kpiBusinessMeasure) {
         Iterator<JSONObject> iterator = jsonArray.iterator();
-        List<BusinessTeamsKPI> businessTeamsKPIs = new ArrayList<>();
+        List<BusinessTeamKPI> businessTeamsKPIs = new ArrayList<>();
         int team ;
         Double value = 0.0;
         LocalDate date;
@@ -128,7 +128,7 @@ public class Loader {
             JSONObject object = iterator.next();
             team =  Integer.parseInt(object.get("team").toString());
             value = Double.parseDouble(object.get("value").toString());
-            BusinessTeamsKPI businessTeamsKPI = new BusinessTeamsKPI(kpiBusinessMeasure,value, 
+            BusinessTeamKPI businessTeamsKPI = new BusinessTeamKPI(kpiBusinessMeasure,value, 
             bteams.get(team-1).getTeamName(),
              LocalDate.parse( currentFile));
             businessTeamsKPIs.add(businessTeamsKPI);

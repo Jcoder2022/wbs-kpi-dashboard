@@ -88,6 +88,25 @@ public class BusinessTeamKPIController {
             summaryMap.put(businessTeam.getTeamName(), teamSummary);
             
         }
+
+
+        Double avgScores =  businessTeamKPIRepository.retreiveValue(scores);
+        Double avgFactoryUtilization =  businessTeamKPIRepository.retreiveValue(factoryUtilization);
+        Double avgEmployeeEngagement = businessTeamKPIRepository.retreiveValue(employeeEngagement);
+        Double avgInterestCoverage = businessTeamKPIRepository.retreiveValue(interestCoverage);
+        Double avgMarketingSpendRev =businessTeamKPIRepository.retreiveValue(marketingSpendRev ) ;
+        Double avgECarSales = businessTeamKPIRepository.retreiveValue(eCarSales);
+        Double avgCo2Penalty = businessTeamKPIRepository.retreiveValue(co2Penalty);
+        Double avgWacc = businessTeamKPIRepository.retreiveValue(wacc);
+    
+        TeamSummary teamSummary = new TeamSummary( avgWacc,  avgScores, avgFactoryUtilization,  avgEmployeeEngagement,
+        avgInterestCoverage, avgMarketingSpendRev,  avgECarSales, avgCo2Penalty);
+
+
+        summaryMap.put("Overall Average", teamSummary);
+        
+        
+
         
         return summaryMap;
     }

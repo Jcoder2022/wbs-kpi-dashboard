@@ -24,5 +24,10 @@ public interface BusinessTeamKPIRepository extends CrudRepository <BusinessTeamK
     Double retreiveValue(@Param("teamName") String teamName,@Param("kpiBusinessMeasure") String kpiBusinessMeasure);
 
 
+    @Query(value = "SELECT  AVG(kpi.value) "+
+    "FROM business_team_kpi kpi where  kpi.kpi_business_measure= :kpiBusinessMeasure" , nativeQuery = true)
+    Double retreiveValue(@Param("kpiBusinessMeasure") String kpiBusinessMeasure);
+
+
     List<BusinessTeamKPI> findByKpiBusinessMeasureAndDataForDay(String kpiMeasure, LocalDate date);
 }

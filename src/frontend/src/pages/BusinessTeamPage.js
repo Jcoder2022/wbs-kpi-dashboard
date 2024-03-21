@@ -1,11 +1,13 @@
 import React from 'react'
 import BusinessTeamComponent from '../components/BusinessTeamComponent'
 
-function BusinessTeamPage() {
+const BusinessTeamPage = () =>{
+  <h1>Selected KPI Measure For Teams </h1>
   return (
+    
     <div className='businessTeamPage'>
-        <h2>Business Team Information</h2>
-    <BusinessTeamComponent/>
+          
+            <BusinessTeamComponent/>
     
     </div>
     

@@ -1,8 +1,11 @@
-import {React,useEffect,useState} from 'react'
+import {React,useEffect,useState} from 'react';
+
+
 
 const TeamsPerformanceComponent = () => {
 
-    const[summary,setSummary]=useState({});
+
+     const[summary,setSummary]=useState({});
 
     useEffect(
 
@@ -14,7 +17,7 @@ const TeamsPerformanceComponent = () => {
                 setSummary(summary);
             }
             fetchPerformanceSummary();
-        }
+        },[]
 
     )
     
@@ -22,7 +25,7 @@ const TeamsPerformanceComponent = () => {
   return (
     
     <div >
-            <table>
+            <table align='center'>
                 <thead>
                  <tr>
                     <th>Team Name</th>
@@ -57,10 +60,11 @@ const TeamsPerformanceComponent = () => {
                 }
             
             </tbody> 
-            </table>
-        </div>
+            </table> 
 
-       
+
+                
+        </div>
 
   )
 }

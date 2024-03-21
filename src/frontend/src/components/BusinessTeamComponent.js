@@ -42,9 +42,8 @@ const BusinessTeamComponent = () => {
                 
                 {   ( Object.keys(KPIMeasureForSpecificDay).map(key=>
                          <tr key={key}>
-                             <td>{key}</td>
                              
-                             <td>{Object.entries( KPIMeasureForSpecificDay[key])[0][1]}</td>
+                             {/* <td>{Object.entries( KPIMeasureForSpecificDay[key])[0][1]}</td> */}
                              <td>{Object.entries( KPIMeasureForSpecificDay[key])[1][1]}</td>
                              <td>{Object.entries( KPIMeasureForSpecificDay[key])[2][1]}</td>
                              <td>{Object.entries( KPIMeasureForSpecificDay[key])[3][1]}</td>
@@ -57,7 +56,6 @@ const BusinessTeamComponent = () => {
             </tbody> 
             </table> 
 
-           
   </div>
   
   )

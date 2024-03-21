@@ -57,8 +57,7 @@ const BusinessTeamComponent = () => {
             </tbody> 
             </table> 
 
-
-
+           
   </div>
   
   )

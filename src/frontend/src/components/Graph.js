@@ -1,6 +1,6 @@
 import {React,useEffect,useState} from 'react'
 import { Chart } from 'react-google-charts';
-
+import "./Graph.css";
 
 const Graph = () => {
   
@@ -23,9 +23,8 @@ const Graph = () => {
 
   return (
     
-    <div >
-{Object.keys(summary)}
-            
+    <div className='summary'>
+          
     <Chart
       chartType="Bar"
       width="100%"
@@ -39,7 +38,7 @@ const Graph = () => {
             "Marketing Spend/Rev",
             "eCar Sales",
             "CO2 Penalty"] ,
-            Object.keys(summary)?.map(key=>
+            (Object.keys(summary)?.map(key=>
                 [   key,
                     Object.entries( summary[key])[0][1], 
                     Object.entries( summary[key])[1][1],
@@ -49,7 +48,7 @@ const Graph = () => {
                     Object.entries( summary[key])[5][1],
                     Object.entries( summary[key])[6][1],
                     Object.entries( summary[key])[7][1]
-                ])] }
+                ]))] }
       
       
     /> 

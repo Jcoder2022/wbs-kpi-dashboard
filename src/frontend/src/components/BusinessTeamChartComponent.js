@@ -49,9 +49,9 @@ const data = [
   }
 ];
 
-export default class BusinessTeamChartComponent extends PureComponent {
+const  BusinessTeamChartComponent = () => {
   
-  render() {
+  //PureComponent.render() {
     return (
       <div className='businessTeam'>
         <div className='businessTeam-container'>
@@ -74,10 +74,11 @@ export default class BusinessTeamChartComponent extends PureComponent {
           <Legend />
           <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
           <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-          <Line type="monotone" dataKey="xv" stroke="#70efef" />
+          <Line type="monotone" dataKey="xv" stroke="#70ca9d" />
         </LineChart>
       </ResponsiveContainer></div>
       </div>
     );
-  }
+  //}
 }
+export default BusinessTeamChartComponent

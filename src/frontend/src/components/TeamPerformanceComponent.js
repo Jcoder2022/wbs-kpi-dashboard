@@ -5,50 +5,7 @@ import './TeamPerformanceComponent.css'
 
 
 
-const data = [
-  {
-    name: '2023-06-19',
-    uv: 4000,
-    pv: 2400,
-    xv: 3000, 
-    amt: 2400,
-  },
-  {
-    name: '2023-06-20',
-    uv: 3000,
-    pv: 1398,
-    xv: 1212,
-    amt: 2210,
-  },
-  {
-    name: '2023-06-21',
-    uv: 2000,
-    pv: 9800,
-    xv: 2000,
-    amt: 2290,
-  },
-  {
-    name: '2023-06-23',
-    uv: 2780,
-    pv: 3908,
-    xv: 6000,
-    amt: 2000,
-  },
-  {
-    name: '2023-06-24',
-    uv: 1890,
-    pv: 4800,
-    xv: 3283,
-    amt: 2181,
-  },
-  {
-    name: '2023-06-25',
-    uv: 2390,
-    pv: 3800,
-    xv: 3999,
-    amt: 2500,
-  }
-];
+
 const  TeamPerformanceComponent = () =>{
   
   const[teamPerformance,setTeamPerformance]=useState({});
@@ -57,7 +14,7 @@ const  TeamPerformanceComponent = () =>{
 
         ()=> {
             const fetchTeamPerformance = async ()=>{
-                const response = await fetch ('http://localhost:8080/wbs-kpi-dashboard/team/1/KPI/wacc');
+                const response = await fetch ('http://localhost:8080/wbs-kpi-dashboard/team/1/KPI/e_cars_sales');
                 const data = await response.json();
                 let arr = [];
                 for (let i = 0; i < data.length; i++) {
@@ -110,6 +67,56 @@ const  TeamPerformanceComponent = () =>{
           <Line type="monotone" dataKey="xv" stroke="#70efef" /> */}
         </LineChart>
       </ResponsiveContainer></div>
+
+
+<table align='center'>
+                <thead>
+                 <tr>
+                    <th>Date</th>
+                    <th>Value</th>
+                    
+                </tr> 
+                </thead><table align='center'>
+                <thead>
+                 <tr>
+                    <th>Date</th>
+                    <th>Value</th>
+                    
+                </tr> 
+                </thead>
+                <tbody>
+                
+                {   ( Object.keys(teamPerformance).map(key=>
+                         <tr key={key}>
+                             
+                             <td>{Object.entries( teamPerformance[key])[0][1]}</td>
+                             <td>{Object.entries( teamPerformance[key])[1][1]}</td>
+                             
+                             
+                         </tr>
+                     ))
+                }
+            
+            </tbody> 
+            </table> 
+
+                <tbody>
+                
+                {   ( Object.keys(teamPerformance).map(key=>
+                         <tr key={key}>
+                             
+                             <td>{Object.entries( teamPerformance[key])[0][1]}</td>
+                             <td>{Object.entries( teamPerformance[key])[1][1]}</td>
+                             
+                             
+                         </tr>
+                     ))
+                }
+            
+            </tbody> 
+            </table> 
+
+
       </div>
     );
   }

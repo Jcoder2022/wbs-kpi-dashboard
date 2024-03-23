@@ -1,5 +1,7 @@
 import {React,useEffect,useState} from 'react';
+import 'react-data-grid/lib/styles.css';
 
+import DataGrid from 'react-data-grid';
 
 
 const TeamsPerformanceComponent = () => {
@@ -20,7 +22,20 @@ const TeamsPerformanceComponent = () => {
         },[]
 
     )
-    
+     const columns = [
+  { key: 'key', name: 'ID' },
+  { key: 'title', name: 'Title' }
+
+  
+];
+
+const rows = [
+  { id: 0, title: 'Example' },
+  { id: 1, title: 'Demo' }
+
+
+  
+];
 
   return (
     
@@ -62,7 +77,7 @@ const TeamsPerformanceComponent = () => {
             </tbody> 
             </table> 
 
-
+           
                 
         </div>
 

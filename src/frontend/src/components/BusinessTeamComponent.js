@@ -1,16 +1,25 @@
 import {React,useEffect,useState} from 'react';
-
+import { useParams } from 'react-router-dom';
+import Chart from './Chart'
 const BusinessTeamComponent = () => {
   
   const[KPIMeasureForSpecificDay,setKPIMeasureForSpecificDay]=useState({});
+  const[chartData,setChartData]=useState({});
+  const   {  date, kpi } = useParams();
 
     useEffect(
 
         ()=> {
             const fetchPerformanceForParticularKPIMeasure = async ()=>{
-                const response = await fetch ('http://localhost:8080/wbs-kpi-dashboard/kpi/scores/day/2023-06-19');
+                const response = await fetch ('http://localhost:8080/wbs-kpi-dashboard/kpi/'+ kpi +'/day/'+date);
                 const data  = await response.json();
+                let arr = [];
+                for (let i = 0; i < data.length; i++) {
+                  let obj = { date: data[i].teamName , kpi :data[i].value};
+                  arr.push(obj);
+                }
                 console.log(data);
+                setChartData(arr);
                 setKPIMeasureForSpecificDay(data);
             }
             fetchPerformanceForParticularKPIMeasure();
@@ -25,7 +34,7 @@ const BusinessTeamComponent = () => {
     
     <div >
  
-
+ <Chart data={chartData} />
 
  <table align='center'>
                 <thead>

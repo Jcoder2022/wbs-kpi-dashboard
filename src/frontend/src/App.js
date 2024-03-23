@@ -6,6 +6,7 @@ import { BrowserRouter as Router ,Route,Routes} from 'react-router-dom';
 import  BusinessTeamChartComponent  from './components/BusinessTeamChartComponent';
 
 import Summary from './components/Summary';
+import BusinessTeamComponent from './components/BusinessTeamComponent';
 
 
 
@@ -14,7 +15,7 @@ function App() {
     <div className="App">
       
       <Routes>
-      <Route  path="/wbs-kpi-dashboard/kpi/" element = {<BusinessTeamPage/>} ></Route>
+      <Route  path="/wbs-kpi-dashboard/kpi/:kpi/day/:date" element = {<BusinessTeamComponent/>} ></Route>
       <Route  path="/wbs-kpi-dashboard/summary/" element = {<TeamsPerformancePage/>}></Route>
       
       <Route  path="/wbs-kpi-dashboard/team/:teamId/KPI/:kpi" element = {<BusinessTeamChartComponent/>}></Route>
